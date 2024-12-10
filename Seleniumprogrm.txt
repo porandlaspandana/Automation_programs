@@ -1,0 +1,240 @@
+capture-
+
+public static void main(String[] args) throws Throwable {
+
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.facebook.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+//		TakesScreenshot d=(TakesScreenshot)driver;    //type casting
+//		File source= d.getScreenshotAs(OutputType.FILE);      //to save the doc
+//        File Target=new File("E:\\bablu pics\\image.png");            //is to set the path
+//        FileUtils.copyFile(source, Target);
+        
+        WebElement a=driver.findElement(By.xpath("//img[@class='fb_logo _8ilh img']"));
+        File source= a.getScreenshotAs(OutputType.FILE);      //to save the doc
+        File Target=new File("E:\\bablu pics\\image.png");            //is to set the path
+        FileUtils.copyFile(source, Target);
+        
+        
+        
+		
+		
+		
+	}
+
+}
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+2-uploada-public static void main(String[] args) throws Throwable {
+
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://imgbb.com/");
+		driver.manage().window().maximize();
+		 Thread.sleep(2000);
+		 WebElement we=driver.findElement(By.xpath("//a[text()='Start uploading']"));
+		 we.click();
+//			JavascriptExecutor js=(JavascriptExecutor)driver;
+//			js.executeScript("arguments[0].click();", we);
+		 Robot rb=new Robot();
+		 rb.delay(2000);
+		 
+		 StringSelection s=new StringSelection("E:\\bablu pics\\IMG_1408.JPG");
+		 Toolkit.getDefaultToolkit().getSystemClipboard().setContents(s, null);
+		 
+			rb.keyPress(KeyEvent.VK_CONTROL);
+			rb.keyPress(KeyEvent.VK_V);
+			Thread.sleep(2000);
+			rb.keyRelease(KeyEvent.VK_V);
+			rb.keyRelease(KeyEvent.VK_CONTROL);
+			
+			rb.keyPress(KeyEvent.VK_ENTER);
+			rb.keyRelease(KeyEvent.VK_ENTER);
+		 
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+3-calender
+public static void main(String[] args) throws Throwable {
+
+		WebDriver driver=new ChromeDriver();
+		driver.get("http://seleniumpractise.blogspot.com/2016/08/how-to-handle-calendar-in-selenium.html");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//input[@class='hasDatepicker']")).click();
+		Thread.sleep(3000);
+		String month=driver.findElement(By.xpath("//span[text()='August']")).getText();
+		String year=driver.findElement(By.xpath("//span[@class='ui-datepicker-year']")).getText();
+		while(!month.equalsIgnoreCase("june")&& year.equalsIgnoreCase("2024")) {
+			driver.findElement(By.xpath("//a[@class='ui-datepicker-next ui-corner-all']")).click();
+			driver.findElement(By.xpath("//span[@class='ui-datepicker-month']")).click();
+			driver.findElement(By.xpath("//span[text()='2024']")).click();
+			
+		}		
+				
+	}
+
+}
+------------------------------------------------------------------------------------------------------------------------------------
+4-public static void main(String[] args) throws Throwable {
+
+		ChromeOptions a= new ChromeOptions();
+		a.addArguments("--disable-notifications");
+		WebDriver driver=new ChromeDriver(a);
+//		driver.get("http://admin:admin@the-internet.herokuapp.com/basic_auth");
+		driver.get("https://www.redbus.in");
+		driver.manage().window().maximize();
+//		driver.findElement(by)
+
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------
+5-
+
+WebDriver driver=new ChromeDriver();
+driver.get("https://www.countries-ofthe-world.com/flags-of-the-world.html");
+driver.manage().window().maximize();
+//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+Thread.sleep(5000);
+JavascriptExecutor js=(JavascriptExecutor)driver;
+//js.executeScript("window.scrollBy(0,1500)");
+//WebElement h=driver.findElement(By.xpath("//td[text()='Italy']"));
+//Point loc=h.getLocation();
+//js.executeScript("window.scrollBy"+loc);
+	js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------
+6-Actions
+
+WebDriver driver=new ChromeDriver();
+		driver.get("https://www.flipkart.com");
+		driver.manage().window().maximize();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//button[text()='✕']")).click();
+		Thread.sleep(3000);
+		Actions d=new Actions(driver);
+		d.moveToElement(driver.findElement(By.xpath("//div[text()='Electronics']"))).perform();  //is for curser on
+		
+		WebElement a=driver.findElement(By.xpath("//input[@name='q']"));
+		a.sendKeys("electronics");
+
+		d.doubleClick(driver.findElement(By.xpath("//input[@name='q']"))).perform();   //double click
+		//driver.get("https://www.amazon.in/");
+		// d.contextClick(driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"))).perform();
+			
+		
+		
+}
+
+	}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+7-explicit
+
+WebDriver driver= new ChromeDriver();
+		driver.get("https://chercher.tech/practice/explicit-wait-sample-selenium-webdriver");
+		driver.manage().window().maximize();
+		
+		WebDriverWait w=new WebDriverWait(driver,Duration.ofSeconds(5));
+		WebElement d=driver.findElement(By.xpath("//button[@id='alert']"));
+		w.until(ExpectedConditions.alertIsPresent());
+		
+		
+-=--------------------------------------------------------------------------------------------------------------------------------------
+8-scrolldown
+
+WebDriver driver=new ChromeDriver();
+		driver.get("https://www.countries-ofthe-world.com/flags-of-the-world.html");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		Thread.sleep(5000);
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,1500)");
+		WebElement h=driver.findElement(By.xpath("//td[text()='Italy']"));
+		Point loc=h.getLocation();
+		js.executeScript("window.scrollBy"+loc);
+//			js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+			
+
+	}
+
+-=--------------------------------------------------------------------------------------------------------------------------------------
+8-upload file
+
+WebDriver driver=new ChromeDriver();
+		driver.get("https://imgbb.com/");
+		driver.manage().window().maximize();
+		 Thread.sleep(2000);
+		 WebElement we=driver.findElement(By.xpath("//a[text()='Start uploading']"));
+		 we.click();
+//			JavascriptExecutor js=(JavascriptExecutor)driver;
+//			js.executeScript("arguments[0].click();", we);
+		 Robot rb=new Robot();
+		 rb.delay(2000);
+		 
+		 StringSelection s=new StringSelection("E:\\bablu pics\\IMG_1408.JPG");
+		 Toolkit.getDefaultToolkit().getSystemClipboard().setContents(s, null);
+		 
+			rb.keyPress(KeyEvent.VK_CONTROL);
+			rb.keyPress(KeyEvent.VK_V);
+			Thread.sleep(2000);
+			rb.keyRelease(KeyEvent.VK_V);
+			rb.keyRelease(KeyEvent.VK_CONTROL);
+			
+			rb.keyPress(KeyEvent.VK_ENTER);
+			rb.keyRelease(KeyEvent.VK_ENTER);
+		 
+	}
+
+}
+=--------------------------------------------------------------------------------------------------------------------------------------
+9-webtable
+
+WebDriver driver= new ChromeDriver();
+		driver.get("https://chercher.tech/practice/table");
+		driver.manage().window().maximize();
+		//how to print no of rows
+		
+		int row=driver.findElements(By.xpath("//table[@id='webtable']//tr")).size();
+		System.out.println("number of rows "+ row);
+		
+		//how to print coloumns
+		int columns=driver.findElements(By.xpath("//table[@id='webtable']//tr//th")).size();
+		System.out.println("number of columns "+ columns);
+		
+		//how to find total no of cells 
+		String s=driver.findElement(By.xpath("//table[@id='webtable']//tr[4]//td[1]")).getText();
+		System.out.println("data "+s);    
+		
+		//how to print all elements in the web table
+		List<WebElement> A=driver.findElements(By.xpath("//td[@style='box-sizing: inherit; border: 2px solid #dddddd; padding: 8px;']"));
+		System.out.println(A.size());
+		
+		//how to print from these 12 
+		
+		for (WebElement we : A) {
+			System.out.println(we.getText());
+
+=--------------------------------------------------------------------------------------------------------------------------------------
+10-xaxis
+
+WebDriver driver=new ChromeDriver();
+		driver.get("https://www.hyrtutorials.com/p/add-padding-to-containers.html");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//label[text()='Email']/following-sibling::input[1]")).sendKeys("vishnu");
+			driver.findElement(By.xpath("//label[text()='Email']/preceding-sibling::input[1]")).sendKeys("vishnu");
+			driver.findElement(By.xpath("//div[@class='container']/child::input[2]")).sendKeys("vishnu");
+		//driver.findElement(By.xpath("//div[@class='container']/descendant::div/button[2]")).click();
+			driver.findElement(By.xpath("//button[@class='btn']/ancestor-or-self::div/button[2]")).click();
+			
+
+=--------------------------------------------------------------------------------------------------------------------------------------	
+11-
